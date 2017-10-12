@@ -9,12 +9,12 @@ public class ReaderWriter_NoStarvation {
 	 * then no reader should be allowed.*/
 	public static void main(String[] args) {
 		Semaphore roomLock = new Semaphore(1);
-		Semaphore turntile = new Semaphore(1);
+		Semaphore turnTile = new Semaphore(1);
 		LightSwitch lightSwitch = new LightSwitch(roomLock);
-		Reader reader = new Reader(turntile, lightSwitch);
+		Reader reader = new Reader(turnTile, lightSwitch);
 		Thread readerT = new Thread(reader);
 		readerT.start();
-		Thread writerT = new Thread(new Writer(roomLock, turntile));
+		Thread writerT = new Thread(new Writer(roomLock, turnTile));
 		writerT.start();
 
 	}
